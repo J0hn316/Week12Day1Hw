@@ -16,6 +16,10 @@ app.get("/pokemon/", function (req, res) {
   res.render("Index", { pokemon: pokemon });
 });
 
+app.get("/pokemon/:id", function (req, res) {
+  res.send(req.params.id);
+});
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
