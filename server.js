@@ -3,13 +3,17 @@ const app = express();
 const jsxEngine = require("jsx-view-engine");
 const port = 3000;
 
-const pokemons = require("./models/pokemon.js");
+const pokemon = require("./models/pokemon.js");
 
 app.set("view engine", "jsx");
 app.engine("jsx", jsxEngine());
 
 app.get("/", function (req, res) {
   res.send("Welcome to the Pokemon App!");
+});
+
+app.get("/pokemon", function (req, res) {
+  res.send(pokemon);
 });
 
 app.listen(port, () => {
