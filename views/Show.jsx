@@ -8,7 +8,7 @@ class Show extends React.Component {
         <h1>Gotta Catch 'Em All</h1>
         <h2>{pokemon.name}</h2>
         <img src={pokemon.img + ".jpg"} alt="Pokemon image" />
-        <a href="/">Back</a>
+        <a href="/pokemon/">Back</a>
       </div>
     );
   }
