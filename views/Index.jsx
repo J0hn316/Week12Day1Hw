@@ -2,28 +2,32 @@ const React = require("react");
 
 class Index extends React.Component {
   render() {
-    const { pokemon } = this.props;
+    const { pokemons } = this.props;
 
     const myStyle = {
       color: "#ffffff",
       backgroundColor: "#000000",
     };
-
-    const capitalizedPokemon = pokemon.map((p) => ({
-      name: p.name.charAt(0).toUpperCase() + p.name.slice(1),
-    }));
-
     return (
       <div style={myStyle}>
         <h1>See All The Pokemon!</h1>
         <ul>
-          {capitalizedPokemon.map((poke, i) => (
-            <div key={poke.name}>
-              <a href={`/pokemon/${i}`}>
-                <p>{poke.name}</p>
-              </a>
-            </div>
-          ))}
+          {pokemons.map((poke, i) => {
+            return (
+              <div key={poke.name}>
+                <a href={`/pokemon/${poke._id}`}>
+                  <p>{poke.name}</p>
+                </a>
+                <form
+                  action={`/pokemon/${poke._id}?_method=DELETE`}
+                  method="POST"
+                >
+                  <input type="submit" value="Delete" />
+                </form>
+                <a href={`/pokemon/${poke._id}/edit`}>Edit this Pokemon</a>
+              </div>
+            );
+          })}
         </ul>
         <a href="/pokemon/new">Search for a Pokemon</a>
         <br />
